@@ -1,0 +1,4 @@
+a = float(input('qual foi o valor total'))
+gorjeta = a * 0.1
+valortotal = a + gorjeta
+print('Valor da conta com 10%: R$ {0:.2f}'.format(valortotal))

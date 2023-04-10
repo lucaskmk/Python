@@ -1,0 +1,62 @@
+def aproxima(n):
+    i = 1
+    a = 1
+    b = 0
+    x = 0
+    while i <= n:
+        i+=1
+        if i % 2 == 1:
+            x -= 1 / (a * (3 ** b))
+        else: 
+            x += 1 / (a * (3 ** b))
+        pi = ((12**0.5)*(x))
+        b += 1
+        a += 2
+
+    return abs(pi)
+
+
+#====
+
+enter = input('Qual carne deseja?')
+while enter != 'pagar':
+    valor = 0
+    vb=0
+    if enter in ['patinho','acem','peito','sobrecoxa','bisteca', 'pagar']:
+        if enter == 'patinho':
+            peso = int(input('Qual peso?'))
+            bandeija = input('Na bandeja? (s/n):')
+            if bandeija == 's':
+                vb += 1 
+            valor += 40
+        elif enter == 'acem':
+            peso = int(input('Qual peso?'))
+            bandeija = input('Na bandeja? (s/n):')   
+            if bandeija == 's':
+                vb += 1          
+            valor += 34
+        elif enter == 'peito':
+            peso = int(input('Qual peso?'))
+            bandeija = input('Na bandeja? (s/n):') 
+            if bandeija == 's':
+                vb += 1      
+            valor += 24
+        elif enter == 'sobrecoxa':
+            peso = int(input('Qual peso?'))
+            bandeija = input('Na bandeja? (s/n):')
+            if bandeija == 's':
+                vb += 1 
+            valor += 13
+        elif enter == 'bisteca': 
+            peso = int(input('Qual peso?'))
+            bandeija = input('Na bandeja? (s/n):')
+            if bandeija == 's':
+                vb += 1 
+            valor += 28
+        if enter != 'pagar':
+            enter = input('')
+    else:
+        print("Carne nao reconhecida - tente novamente.")
+        enter = input('')
+valor += (vb*0.50)
+print(valor)
