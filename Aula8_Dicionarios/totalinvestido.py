@@ -47,3 +47,35 @@ def soma_investimento(dm):
             else:
                 va[investidor] = totalinvest
     return va
+
+
+
+#=====================================
+def soma_investimento(empresas):
+    final = {}
+    le = []
+
+    for e in empresas.keys():
+        empresa_atual = empresas[e]
+        le.append(e)
+        valor_total = empresa_atual['valor de mercado']
+        for r in empresa_atual['associados']:
+            if r not in final:
+                final[r] = 0
+                final[r] += (empresa_atual['associados'][r]/100)*valor_total
+            else:
+                final[r] += (empresa_atual['associados'][r]/100)*valor_total
+
+    while any(i in final for i in le):
+        for i in le:
+            if i in final:
+                empresa_atual = empresas[i]
+                valor_total = final[i]
+                for r in empresa_atual['associados']:
+                    if r not in final:
+                        final[r] = 0
+                        final[r] += (empresa_atual['associados'][r]/100)*valor_total
+                    else:
+                        final[r] += (empresa_atual['associados'][r]/100)*valor_total
+                del final[i]
+    return final
